@@ -6,6 +6,13 @@ class Jel:
         self.x = x
         self.y = y
 
+def eltelt(elso, masodik):
+    ido1 = elso[0] * 3600 + elso[1] * 60 + elso[2]
+    ido2 = masodik[0] * 3600 + masodik[1] * 60 + masodik[2]
+    telt = ido2-ido1
+    return telt
+
+
 jelek = []
 
 fajl = open("jel.txt", 'rt', encoding='utf-8')
