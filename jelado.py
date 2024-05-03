@@ -41,3 +41,19 @@ print('\n4. feladat')
 kozott = eltelt([elso.o, elso.p, elso.mp], [utolso.o, utolso.p, utolso.mp])
 print("Időtartam:", ':'.join(vissza(kozott)))
 
+
+bal = jelek[0].x
+also = jelek[0].y
+jobb = jelek[0].x
+felso = jelek[0].y
+for j in jelek:
+    if j.x > jobb:
+        jobb = j.x
+    if j.x < bal:
+        bal = j.x
+    if j.y < also:
+        also = j.y
+    if j.y > felso:
+        felso = j.y
+print('\n5. feladat')
+print(f'Bal alsó: {bal} {also}, jobb felső: {jobb} {felso}')
