@@ -57,3 +57,9 @@ for j in jelek:
         felso = j.y
 print('\n5. feladat')
 print(f'Bal alsó: {bal} {also}, jobb felső: {jobb} {felso}')
+
+osszeg = 0
+for i in range(0, len(jelek)-1):
+    osszeg += math.sqrt(pow((jelek[i].x - jelek[i+1].x), 2) + pow((jelek[i].y - jelek[i+1].y), 2))
+print('\n6. feladat')
+print('Elmozdulás:', round(osszeg, 3), 'egység')
