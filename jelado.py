@@ -7,6 +7,9 @@ class Jel:
         self.mp = int(mp)
         self.x = int(x)
         self.y = int(y)
+    
+    def __str__(self):
+        return f'{self.o} {self.p} {self.mp}'
 
 def eltelt(elso, masodik):
     ido1 = elso[0] * 3600 + elso[1] * 60 + elso[2]
@@ -63,3 +66,32 @@ for i in range(0, len(jelek)-1):
     osszeg += math.sqrt(pow((jelek[i].x - jelek[i+1].x), 2) + pow((jelek[i].y - jelek[i+1].y), 2))
 print('\n6. feladat')
 print('Elmozdulás:', round(osszeg, 3), 'egység')
+
+
+txt = open('kimaradt.txt', 'wt', encoding='utf-8')
+
+
+for j in range(1, len(jelek)):
+    jel1 = jelek[j-1]
+    jel2 = jelek[j]
+    elteresx = abs(jel1.x-jel2.x) / 10
+    elteresy = abs(jel1.y-jel2.y) / 10
+    koordinataelteres = 0
+
+    if elteresx > elteresy:
+        koordinataelteres = elteresx
+    else:
+        koordinataelteres = elteresy
+    
+    if koordinataelteres % 1 == 0:
+        koordinataelteres -= 1
+        
+
+    idoelteres = eltelt([jel1.o, jel1.p, jel1.mp], [jel2.o, jel2.p, jel2.mp]) / 300
+    if idoelteres % 1 == 0:
+        idoelteres -= 1
+
+    if koordinataelteres >= 1 and koordinataelteres > idoelteres:
+        txt.write(f'{jel2} koordináta-eltérés {(int(koordinataelteres))}\n')
+    elif idoelteres >= 1 and idoelteres > koordinataelteres:
+        txt.write(f'{jel2} időeltérés {(int(idoelteres))}\n')
